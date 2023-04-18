@@ -50,13 +50,12 @@ async function deleteOneById(tableName, id) {
 
 
 async function updateOneById(tableName,id, options = {}) {
-
     const query = Queries.command_update
     .replace("<table_name>", tableName)
     .replace("<key_value>", Object.keys(options).map((key) =>
     `${key}= ?`));
     const valuesToUpDate = Object.values(options);
-    valuesToUpDate.push(+id)
+    valuesToUpDate.push(+id || id)
     try {
         const res = await runQuery(query, ...valuesToUpDate);
         return res;

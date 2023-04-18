@@ -1,0 +1,42 @@
+[
+    {
+        "name_project": "Super play",
+        "project_manager": "BAT7",
+        "name_architect": "igor",
+        "name_photographer": "papi",
+        "category": "branding walls",
+        "img_src": "https://www.okd.co.il/wp-content/uploads/2022/08/Sahar-Projects-Super-Play-03.jpg"
+    },
+    {
+        "name_project": "ARMIS",
+        "project_manager": "BAT7",
+        "name_architect": "igor",
+        "name_photographer": "papi",
+        "category": "branding walls",
+        "img_src": "https://www.okd.co.il/wp-content/uploads/2022/07/Peled-Studios-Armis-181-HDR-copy-scaled.jpg"
+    },
+    {
+        "name_project": "GONG",
+        "project_manager": "BAT7",
+        "name_architect": "igor",
+        "name_photographer": "papi",
+        "category": "branding walls",
+        "img_src": "https://www.okd.co.il/wp-content/uploads/2022/05/UP_GONG-61.jpg"
+    },
+    {
+        "name_project": "Emendo Bio",
+        "project_manager": "BAT7",
+        "name_architect": "igor",
+        "name_photographer": "papi",
+        "category": "branding walls",
+        "img_src": "https://www.okd.co.il/wp-content/uploads/2022/02/Peled-Studios-Emendo-Bio_-41-HDR-copy-1-scaled.jpg"
+    },
+    {
+        "name_project": "Forcepoint",
+        "project_manager": "BAT7",
+        "name_architect": "igor",
+        "name_photographer": "papi",
+        "category": "branding walls",
+        "img_src": "https://www.okd.co.il/wp-content/uploads/2021/08/Peled-Studios-Forcepoint_-365-HDR-copy-scaled.jpg"
+    }
+]

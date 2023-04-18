@@ -1,4 +1,5 @@
 const CRUD = require("../service/crud.service");
+const {DB_IMAGES} = require("../database/fakeData/DB");
 
 
 exports.getAll = async(req, res)=>{
@@ -8,6 +9,9 @@ exports.getAll = async(req, res)=>{
 
 try {
     const data = await CRUD.findAll(options);
+    if(!data.length){
+        return res.status(200).send(DB_IMAGES);
+    } 
     res.status(200).send(data);
 } catch (error) {
     console.log(error);
@@ -21,6 +25,11 @@ exports.getAllByName = async(req, res)=> {
         const tableName = "images";
         const keyName = "project_name"
         const data = await CRUD.findByName(tableName, keyName, req.params.category);
+        // const isData = Boolean(data === []);
+        if(!data.length){
+            const filterImages = DB_IMAGES.filter((img) => img.project_name == req.params.category);
+            return res.status(200).send(filterImages);
+        }  
         res.status(200).send(data);
     } catch (error) {
         console.log(error);
@@ -43,8 +52,10 @@ exports.create = async(req, res)=>{
 exports.delete = async(req, res)=>{
     try {
         const tableName = "images";
-        const deleteOne = await CRUD.deleteOneById(tableName, ...req.params.id);
-        if(!deleteOne.affectedRows) return res.status(400).json({error: "No item deleted"})
+        const deleteOne = await CRUD.deleteOneById(tableName, req.params.id);
+        console.log(deleteOne.affectedRows);
+        if(deleteOne.affectedRows === 0) return res.status(400).json({error: "No item deleted"})
+        console.log(deleteOne);
         res.status(201).send(deleteOne);
     } catch (error) {
         res.status(500).send(error);
