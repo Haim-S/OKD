@@ -1,5 +1,5 @@
 import React from 'react'
-import Heading from '../components/common/Heading'
+import Heading from '../components/common/titles/Heading'
 
 const Blog = () => {
   return (

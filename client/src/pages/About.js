@@ -1,13 +1,13 @@
 import React from 'react'
 import { about } from '../constants/data'
-import Heading from '../components/common/Heading'
+import Heading from '../components/common/titles/Heading'
 
 const About = () => {
   return (
     <>
     <section className='about'>
         <div className='container flex'>
-            {about.map((value)=> (
+            {about.map((value, index)=> (
                 <>
                 <div className='left' data-aos='fade-down-right'>
                     <img src={value.cover} alt="about.pic" />

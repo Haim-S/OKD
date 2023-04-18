@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
-import Heading  from "../components/common/Heading"
+import Heading  from "../components/common/titles/Heading"
+import Subtitle  from "../components/common/titles/Subtitle"
 import { portfolio } from "../constants/data";
 
 const allCategory = ["all", ...new Set(portfolio.map((item)=> item.category))]
@@ -26,25 +27,31 @@ const Portfolio = () => {
         <div className='container'>
             <Heading title="Subjects"/>
             <div className='catButton'>
-                {category.map((category)=> (
-                    <button className='primaryBtn' onClick={()=> filterItems(category)} data-aos='zoom-out-down'>
+                {category.map((category, index)=> (
+                    <button key={index} className='primaryBtn' onClick={()=> filterItems(category)} data-aos='zoom-out-down'>
                         {category}
                     </button>
                 ))}
             </div>
             <div className='content grid3'>
               
-                {list.map((item)=>(
-                    <div className='box' data-aos='fade-up'>
+                {list.map((item, index)=>(
+                    <div key={index} className='box' data-aos='fade-up'>
                         <div className='img'>
-                            <img style={{width: "300px", height: "310px"}} src={item.cover} alt=''/>
-                           
+                            <img style={{width: "100%", height: "100%"}} src={item.cover} alt=''/>
                         </div>
                         <div className='overlay'>
-                            <Link>{item.title}</Link>
-                            <Link>{item.name}</Link>
-                        <Link to={`/Project/${item.category_url}`}>
-                            <VisibilityOutlinedIcon/>
+                            <Link to={`/Project/${item.category_url}`} style={{
+                            width: "100%",
+                            height: "100%",
+                            color: "black",
+                            display: "flex",
+                            alignContent: "center",
+                            justifyContent: "center",
+                            flexDirection: "column"}}>
+                            <Subtitle title={item.title}/>
+                            {/* <p>{item.name}</p> */}
+                            {/* <VisibilityOutlinedIcon/> */}
                         </Link>
                             
                         </div>

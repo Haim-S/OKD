@@ -1,17 +1,25 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import {Menu} from "@mui/icons-material"
 import {RoutesPage} from "../../../pages/index";
-import logo from "../../../images/logoOkd1.png"
+import logo from "../../../images/logo_web.png"
+import {NavbarTag} from "./NavbarStyle";
 
 const Navbar = () => {
 
-    const [responsive, setResponsive] = useState(false);
-  return (
-    <nav>
+  const [responsive, setResponsive] = useState(false);
+  const location = useLocation();
+  const path = location.pathname;
+  const regex = /^\/Images\/[^/]+\/[^/]+$/;
+  const isMatch = regex.test(path);
+  
+    return (
+    <NavbarTag location={isMatch}>
     <div className='container flexsb'>
     <div className='logo'>
-    <img style={{width: "120px", height: "100px"}} src={logo} alt='logo.pic' data-aos='zoom-in-right'/>
+      <Link to={"/ControlPage"}>
+    <img style={{width: "100px", height: "80px", marginTop: "8px"}} src={logo} alt='logo.pic' data-aos='zoom-in-right'/>
+      </Link>
     </div>
     <div className={responsive ? "hideMenu": "Menu"}>
         {RoutesPage.map((links, index) => {
@@ -28,7 +36,7 @@ const Navbar = () => {
     </button>
 
 </div>
-    </nav>
+    </NavbarTag>
   )
 }
 

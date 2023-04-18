@@ -9,6 +9,7 @@ const Project = React.lazy(()=> import("./Project"));
 const Services = React.lazy(()=> import("./Services"));
 const Testimonials = React.lazy(()=> import("./Testimonials"));
 const Images = React.lazy(()=> import("./Images"));
+const Admin = React.lazy(()=> import("./admin/Admin"));
 
 
 const RoutesPage = [
@@ -62,8 +63,14 @@ const RoutesPage = [
     },
     {
         linkLabel: "Images",
-        path: "/Images/:project_name",
+        path: "/Images/:category/:project_name",
         component: Images,
+        isNavbarLink: false,
+    },
+    {
+        linkLabel: "Admin",
+        path: "/ControlPage/",
+        component: Admin,
         isNavbarLink: false,
     },
 
