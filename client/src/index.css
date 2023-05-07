@@ -14,7 +14,9 @@
   --headingColor: #E5D3C9;
   --white: #fff;
   --black: #000;
+  --dark-color:  #141414;
   --sliver: #bac8d3;
+  --transition: all 300ms ease-in-out;
 }
 body {
   background-color: var(--bodyBackground);
@@ -29,8 +31,28 @@ a {
 a:hover {
   color: var(--primaryColor);
 }
+
+
+form{
+  margin-top: 80px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+
 p {
   color:#2f3030;
+  font-size: 15px;
+  line-height: 30px;
+  margin: 20px 0;
+}
+
+.paragraph{
+  color: var(--sliver);
   font-size: 15px;
   line-height: 30px;
   margin: 20px 0;
@@ -43,6 +65,12 @@ h5,
 h6 {
   font-weight: 400;
 }
+
+img{
+  width: 100%;
+  display: block;
+}
+
 .container {
   max-width: 80%;
   margin: auto;
@@ -80,13 +108,29 @@ section {
 .flex {
   display: flex;
 }
+
+.heading {
+  font-size: 30px;
+  color: var(--primaryColor);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.subtitle{
+  font-size: 25px;
+  color: var(--white);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 60px;
+}
 /* -----navbar------ */
 
 nav {
   background-color: var(--navbarBackground);
   height: 15vh;
   line-height: 15vh;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   left: 0;
   width: 100%;
@@ -102,6 +146,10 @@ nav a {
   cursor: pointer;
   color: var(--white);
   display: none;
+}
+
+.logo{
+  margin-top: -120px;
 }
 
 @media screen and (max-width: 768px) {
@@ -127,11 +175,14 @@ nav a {
     width: 100%;
     background-color: var(--headingColor);
   }
+  .logo{
+    margin-top: 0;
+  }
 }
 
 /*----------header------- */
 header{
-  padding-top: 30%;
+  padding: 20%;
   position: relative;
 }
 header::after {
@@ -144,7 +195,7 @@ header::after {
   background-attachment: fixed;
   z-index: -1;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
 }
 .headercontent{
   max-width: 50%;
@@ -161,7 +212,7 @@ header h1{
 
 /*---------about-------------*/
 .about{
- 
+ margin-top: 5%;
   color:#2f3030;
 }
 .about p{
@@ -262,7 +313,7 @@ article .box {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--primaryColor);
+  background-color:  rgb(130, 151, 134, 0.8);
   opacity: 0;
   transition: 0.5s;
   z-index: -1;
@@ -358,14 +409,111 @@ label {
 /* -----images--------- */
 
 .container_images {
+ /* position: absolute; */
   padding-top: 5%;
   margin-top: 20%;
   max-width: 80%;
   margin: auto;
+ 
 }
 
+.work__content--item{
+  position: relative;
+}
+.work__content--item::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(130, 151, 134, 0.8);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.work__content--item:hover::after{
+  opacity: 1;
+}
+
+@media screen and (min-width: 678px){
+  .work__content{
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 800px){
+  .work__content{
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1200px){
+  .work__content{
+      grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.image__modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 5;
+  transition: var(--transition);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.image__modal__show{
+  visibility: visible;
+  opacity: 1;
+}
+.image__modal--content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 720px;
+  min-width: 350px;
+  width: 100%;
+}
+.image__modal--content img{
+  width: 100%;
+}
+.modal__close--btn{
+  position: absolute;
+  right: -15px;
+  top: -15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.modal__close--btn:hover{
+  color: var(--dark-color)!important;
+}
+
+.bg__blue{
+  background-color: var(--primaryColor);
+}
+
+.text__light{
+  color: var(--white)!important;
+}
 /* -----images--------- */
 
+
+/* -----ADMIN--------- */
+.admin_contianer{
+  max-width: 80%;
+  margin: auto;
+background-color: #fff;
+}
+
+
+/* -----ADMIN--------- */
 
 /* ------footer------ */
 footer {
@@ -402,16 +550,28 @@ footer i {
   .about .flex {
     flex-direction: column;
   }
+  .testimonials{
+    display: none;
+  }
   .right,
   .left {
     width: 100%;
   }
   .grid4,
   .grid3 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
+.catButton {
+  margin-top: 0%;
+  flex-direction: column;
+}
+
+article > .container{
+margin-top: 20%;
+}
   article {
     margin: 0;
     padding-bottom: 50px;
+   
   }
 }

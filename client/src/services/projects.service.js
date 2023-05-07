@@ -17,11 +17,26 @@ const getAllProjectsByCategoryName = async (category) => {
     }
 }
 
-const createProject = async () => {
+const createProject = async (
+    name_project,
+    project_manager,
+    name_architect,
+    name_photographer,
+    category,
+    img_src
+    ) => {
     try {
-        
+        const response = await api.post({
+            "name_project":name_project, 
+            "project_manager":project_manager, 
+            "name_architect":name_architect, 
+            "name_photographer":name_photographer,
+            "category": category,
+            "img_src":img_src, 
+        })
+        return response.data;
     } catch (error) {
-        
+        console.log(error);
     }
 }
 

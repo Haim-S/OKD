@@ -5,8 +5,8 @@ import {social_links} from "../../../constants/data"
 const Footer = () => {
   return (
     <footer>
-        {social_links.map((item)=>(
-            <i data-aos='zoom-in'>{item.icon}</i>
+        {social_links.map((item, index)=>(
+            <i key={index} data-aos='zoom-in'>{item.icon}</i>
         ))}
         <p data-aos='zoom-in'>All rights reserved to AHs</p>
     </footer>

@@ -1,5 +1,7 @@
 const CRUD = require("../service/crud.service");
-
+const bcrypt = require("bcrypt");
+const uuid = require("uuid");
+const JwtTokenService = require("../service/jwt.service");
 
 exports.getAll = async(req, res)=>{
     const options = {
@@ -18,6 +20,10 @@ try {
 exports.create = async(req, res)=>{
     try {
         const tableName = "users";
+        req.body.id = uuid.v4();
+        req.body.password = await bcrypt.hash(req.body.password, 10);
+        req.body.jwt_ac_token = JwtTokenService.createAccessToken(req.body.id);
+        req.body.jwt_rf_token = JwtTokenService.createRefreshToken(req.body.id);
         const new_data = await CRUD.createOne(tableName,Object.keys(req.body),Object.values(req.body));
         res.status(201).send(new_data); 
     } catch (error) {

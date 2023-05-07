@@ -21,9 +21,10 @@ const settings = {
     <>
     <section className='testimonials header'>
       <div className='container'>
+       
         <Slider {...settings}>
-          {testimonials.map((value)=> (
-          <div className='box'>
+          {testimonials.map((value, index)=> (
+          <div className='box' key={index}>
               <i data-aos='zoom-out-down'>
                 <FormatQuoteIcon/>
               </i>

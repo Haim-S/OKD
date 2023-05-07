@@ -1,4 +1,5 @@
 const CRUD = require("../service/crud.service");
+const {DB_IMAGES} = require("../database/fakeData/DB");
 
 
 exports.getAll = async(req, res)=>{
@@ -21,6 +22,11 @@ exports.getAllByName = async(req, res)=> {
         const tableName = "images";
         const keyName = "project_name"
         const data = await CRUD.findByName(tableName, keyName, req.params.category);
+        const isData = Boolean(data === []);
+        if(!isData){
+            const filterImages = DB_IMAGES.filter((img) => img.project_name == req.params.category);
+            return res.status(200).send(filterImages);
+        }  
         res.status(200).send(data);
     } catch (error) {
         console.log(error);

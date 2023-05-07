@@ -7,10 +7,7 @@ const Header = () => {
   return (
     <header>
         {home.map((value, index)=> (
-        <div className='headercontent'>
-          <h3 className='fontSize' data-aos='fade-right'>
-          {value.text}
-          </h3>
+        <div className='headercontent' key={index}>
           <h1>
           <Typewrite
           options={{
@@ -20,7 +17,7 @@ const Header = () => {
           }}
           />
           </h1>
-          <p data-aos='fade-left'>{value.desc}</p>
+          <p className='paragraph' data-aos='fade-left'>{value.desc}</p>
         </div>
         ))}
        

@@ -16,11 +16,18 @@ const getAllImagesByProjectName = async (project_name) => {
     }
 }
 
-const createImages = async () => {
+
+
+const createImages = async (img_url, category, project_name) => {
     try {
-        
+        const response = await api.post({
+            "image_src": img_url,
+            "category" : category,
+            "project_name": project_name
+        });
+        return response.data;
     } catch (error) {
-        
+        console.log(error);
     }
 }
 

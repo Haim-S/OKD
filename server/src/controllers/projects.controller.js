@@ -1,4 +1,6 @@
 const CRUD = require("../service/crud.service");
+const {DB_PROJECTS} = require("../database/fakeData/DB");
+
 
 
 exports.getAll = async(req, res)=>{
@@ -8,6 +10,9 @@ exports.getAll = async(req, res)=>{
 
 try {
     const data = await CRUD.findAll(options);
+    if (!data){
+          return res.status(200).send(mokData);
+      }
     res.status(200).send(data);
 } catch (error) {
     console.log(error);
@@ -21,6 +26,11 @@ exports.getAllByName = async(req, res)=> {
         const tableName = "projects";
         const keyName = "category";
         const data = await CRUD.findByName(tableName, keyName, req.params.category);
+        const isData = Boolean(data === []);
+        if(!isData){
+            const filterProject = DB_PROJECTS.filter((project) => project.category == req.params.category);
+            return res.status(200).send(filterProject);
+        }  
         res.status(200).send(data);
     } catch (error) {
         console.log(error);
